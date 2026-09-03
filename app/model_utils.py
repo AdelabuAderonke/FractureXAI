@@ -74,7 +74,7 @@ def compute_gradcam(model, processor, image: Image.Image, prompt: str, generated
         else:
             tensor = out
         tensor.retain_grad()
-        activations["value"] = torch.tensor
+        activations["value"] = tensor
     handle = vision_tower.register_forward_hook(forward_hook)
 
     try:
