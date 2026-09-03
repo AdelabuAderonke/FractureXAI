@@ -85,6 +85,7 @@ def compute_gradcam(model, processor, image: Image.Image, prompt: str, generated
         text = processor.apply_chat_template(messages, add_generation_prompt=False, tokenize=False)
         inputs = processor(text=text, images=[image], return_tensors="pt").to(model.device)
 
+        inputs["pixel_values"] = inputs["pixel_values"].clone().requires_grad_(True)
         model.zero_grad()
         outputs = model(**inputs)
         logits = outputs.logits
