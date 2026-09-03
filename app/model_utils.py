@@ -62,11 +62,19 @@ def compute_gradcam(model, processor, image: Image.Image, prompt: str, generated
     vision_tower = find_vision_tower(model)
     activations = {}
 
+    # def forward_hook(module, inp, out):
+    #     out = out[0] if isinstance(out, tuple) else out
+    #     out.retain_grad()
+    #     activations["value"] = out
     def forward_hook(module, inp, out):
-        out = out[0] if isinstance(out, tuple) else out
-        out.retain_grad()
-        activations["value"] = out
-
+        if hasattr(out, "last_hidden_state"):
+            tensor = out.last_hidden_state
+        elif isinstance(out, tuple):
+            tensor = out[0]
+        else:
+            tensor = out
+        tensor.retain_grad()
+        activations["value"] = torch.tensor
     handle = vision_tower.register_forward_hook(forward_hook)
 
     try:
