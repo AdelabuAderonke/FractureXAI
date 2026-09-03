@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+from model_utils import load_model, generate_response, postprocess, compute_gradcam, overlay_heatmap
 
 from config import (
     APP_TITLE, APP_SUBTITLE, RESEARCH_DISCLAIMER, SCOPE_DISCLAIMER,
@@ -29,7 +30,7 @@ st.markdown("""
         align-items: center; justify-content: center; text-align: center; width: 100%; }
     [data-testid="stFileUploaderDropzoneInstructions"] span,
     [data-testid="stFileUploaderDropzoneInstructions"] small { color: #ffffff !important; }
-    [data-testid="stBaseButton-secondary"] { color: #000000 !important; }
+    [data-testid="stBaseButton-secondary"] { background-color: #161b22; color: #000000 !important; }
     [data-testid="stBaseButton-secondary"] span { color: #000000 !important;}
 
     .stRadio > label > div > p,
@@ -47,6 +48,17 @@ st.markdown("""
 
     p, span, label, .stMarkdown {
         color: #ffffff;
+    }
+    .stButton > button,
+    .stButton > button p {
+        color: #ffffff !important;
+        background-color: #d4534b !important;
+        border: none !important;
+    }
+    .stButton > button:hover,
+    .stButton > button:hover p {
+        color: #ffffff !important;
+        background-color: #b8433c !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -108,6 +120,16 @@ with col1:
                 st.success(f"Result: {label}")
             else:
                 st.error(f"Result: {label}")
+st.markdown("Grad-CAM explanation (where the model looked to make its decision):")
+try:
+    from model_utils import compute_gradcam, overlay_heatmap
+    with st.spinner("Computing explanation heatmap..."):
+        cam = compute_gradcam(model, processor, image, prompt, raw_text)
+        overlay = overlay_heatmap(image, cam)
+    st.image(overlay, use_container_width=True)
+    st.caption("Warmer regions indicate areas that most influenced the model's generated diagnosis.")
+except Exception as e:
+    st.error(f"Explanation could not be generated: {e}")
 
 with col2:
     st.markdown("""
