@@ -30,7 +30,24 @@ st.markdown("""
     [data-testid="stFileUploaderDropzoneInstructions"] span,
     [data-testid="stFileUploaderDropzoneInstructions"] small { color: #ffffff !important; }
     [data-testid="stBaseButton-secondary"] { color: #000000 !important; }
-    [data-testid="stBaseButton-secondary"] span { color: #000000 !important; }
+    [data-testid="stBaseButton-secondary"] span { color: #000000 !important;}
+
+    .stRadio > label > div > p,
+    div[data-testid="stWidgetLabel"] p {
+        color: #ffffff !important;
+    }
+
+    [data-testid="stFileUploaderFile"] {
+        background-color: #ffffff;
+    }
+    [data-testid="stFileUploaderFile"] span,
+    [data-testid="stFileUploaderFile"] small {
+        color: #000000 !important;
+    }
+
+    p, span, label, .stMarkdown {
+        color: #ffffff;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -44,7 +61,7 @@ st.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# --- Mode selection ---
+# Mode selection
 mode = st.radio(
     "What would you like to do?",
     ["Detect fracture (pediatric wrist X-ray)", "Classify fracture type (assumes fracture present)"],
@@ -69,7 +86,7 @@ with col1:
     )
     if uploaded_file is not None:
         image = Image.open(uploaded_file).convert("RGB")
-        st.image(image, use_column_width=True)
+        st.image(image, use_container_width=True)
 
         if st.button("Run analysis"):
             if mode.startswith("Detect"):

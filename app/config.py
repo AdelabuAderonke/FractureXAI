@@ -28,7 +28,7 @@ DETECTION_MODELS = {
 }
 
 # App text
-APP_TITLE = "Fractura"
+APP_TITLE = "FractureXAI"
 APP_SUBTITLE = "AI bone fracture detection with Grad-CAM explainability"
 RESEARCH_DISCLAIMER = "Research demo — not for clinical use"
 SCOPE_DISCLAIMER = (
