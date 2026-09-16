@@ -5,13 +5,13 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.50.0-FF4B4B.svg)](https://streamlit.io/)
 [![MedGemma](https://img.shields.io/badge/Model-MedGemma--4B-4285F4.svg)](https://huggingface.co/google/medgemma-4b-it)
 
-A medical AI diagnostic tool that fine-tunes Google's MedGemma vision-language model to detect and classify bone fractures from radiographs, paired with Grad-CAM visual explanations so clinicians can see which regions of an X-ray drove each prediction.
+A medical AI diagnostic tool that fine-tunes Google's MedGemma vision-language model to detect and classify bone fractures from radiographs, paired with GradCAM visual explanations so clinicians can see which regions of an X-ray drove each prediction.
 
-> **Research prototype only — not validated for clinical use.**
+> **Research prototype only not validated for clinical use.**
 
 ## Features
 
-- **Three Fine-Tuned Models**: independently trained LoRA adapters on a frozen MedGemma-4B base — fracture subtype classification, high-sensitivity fracture detection, and high-specificity fracture detection
+- **Three Fine-Tuned Models**: independently trained LoRA adapters on a frozen MedGemma-4B base fracture subtype classification, high-sensitivity fracture detection, and high-specificity fracture detection
 - **Explainability**: Grad-CAM adapted for a Vision Transformer (SigLIP-based) vision encoder, producing a heatmap overlay on the original X-ray
 - **Base vs. Fine-Tuned Benchmarking**: every model evaluated against the untuned base MedGemma on an identical held-out test set
 - **Interactive Dashboard**: Streamlit-based web interface with mode and model selection
@@ -25,7 +25,7 @@ A medical AI diagnostic tool that fine-tunes Google's MedGemma vision-language m
 - `notebooks/Second_Medgemma_Grazpedwri_finetuned.ipynb` — GRAZPEDWRI-DX fracture-detection fine-tuning (Model B2)
 - `experimentd/Dataset_Exploration.ipynb` — Explored the dataset
 **Earlier / superseded:**
-- `notebooks/first_version_fine_tune_model.ipynb` — initial combined-dataset model, superseded following supervisor guidance to train each dataset independently; retained for transparency of the project's iterative process
+- `experiments/first_version_fine_tune_model.ipynb` — initial combined dataset model, superseded following my supervisor guidance to train each dataset independently; retained for transparency of the project's iterative process
 
 ## System Workflow
 
