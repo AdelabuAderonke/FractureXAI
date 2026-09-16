@@ -7,7 +7,6 @@ from config import (
     MODEL_A_PATH, PROMPT_A, FRACTURE_CLASSES_A,
     PROMPT_B, FRACTURE_CLASSES_B, DETECTION_MODELS,
 )
-from model_utils import load_model, generate_response, postprocess
 
 st.set_page_config(page_title=APP_TITLE, layout="wide")
 
@@ -120,16 +119,15 @@ with col1:
                 st.success(f"Result: {label}")
             else:
                 st.error(f"Result: {label}")
-    st.markdown("Grad-CAM explanation (where the model looked to make its decision):")
-    try:
-        from model_utils import compute_gradcam, overlay_heatmap
-        with st.spinner("Computing explanation heatmap..."):
-            cam = compute_gradcam(model, processor, image, prompt, raw_text)
-            overlay = overlay_heatmap(image, cam)
-        st.image(overlay, use_container_width=True)
-        st.caption("Warmer regions indicate areas that most influenced the model's generated diagnosis.")
-    except Exception as e:
-        st.error(f"Explanation could not be generated: {e}")
+            st.markdown("Grad-CAM explanation (where the model looked to make its decision):")
+            try:
+                with st.spinner("Computing explanation heatmap..."):
+                    cam = compute_gradcam(model, processor, image, prompt, raw_text)
+                    overlay = overlay_heatmap(image, cam)
+                st.image(overlay, use_container_width=True)
+                st.caption("Warmer regions indicate areas that most influenced the model's generated diagnosis.")
+            except Exception as e:
+                st.error(f"Explanation could not be generated: {e}")
 
 with col2:
     st.markdown("""
