@@ -28,8 +28,8 @@ A medical AI diagnostic tool that fine-tunes Google's MedGemma vision-language m
 - `experiments/first_version_fine_tune_model.ipynb` — initial combined dataset model, superseded following my supervisor guidance to train each dataset independently; retained for transparency of the project's iterative process
 
 ## System Workflow
+<img width="681" height="481" alt="figure1_pipeline" src="https://github.com/user-attachments/assets/f4ea4cbc-5afe-4fe1-968d-b6cf1e3940e7" />
 
-*(Insert exported architecture diagram: Datasets → Preprocessing → Fine-tuning (Models A/B/B2) → Streamlit App → Grad-CAM Explanation)*
 
 ## Quick Start
 
@@ -102,8 +102,7 @@ Navigate to the printed URL (or `http://localhost:8501` if running locally).
 ### Step 1: Choose a Task
 
 When you launch the application, select the task for the model.
-
-*(Insert screenshot: mode selector — "Detect fracture" vs "Classify fracture type")*
+<img width="1419" height="751" alt="step1" src="https://github.com/user-attachments/assets/009f61bf-42d5-4825-a54b-73deefefa28d" />
 
 **Choose your task:**
 - **Detect fracture (pediatric wrist X-ray)** — presence/absence detection, with a choice between a high-sensitivity or high-specificity model
@@ -117,7 +116,8 @@ When you launch the application, select the task for the model.
 
 ### Step 2: Upload an X-ray
 
-*(Insert screenshot: upload box with an X-ray loaded)*
+<img width="1357" height="723" alt="step2" src="https://github.com/user-attachments/assets/f3d2a214-1d3a-4b7c-b5ba-270859c4bc1c" />
+
 
 **What Happens:**
 - The image is displayed for confirmation before analysis
@@ -127,7 +127,7 @@ When you launch the application, select the task for the model.
 
 ### Step 3: Run Analysis
 
-*(Insert screenshot: result badge Fracture / No Fracture)*
+<img width="1421" height="704" alt="step3" src="https://github.com/user-attachments/assets/39def171-351c-4175-8333-de3bb11a8e48" />
 
 **What Happens:**
 - The selected model generates a natural-language diagnostic description
@@ -137,7 +137,8 @@ When you launch the application, select the task for the model.
 
 ### Step 4: Review the GradCAM Explanation
 
-*(Insert screenshot: original image next to GradCAM heatmap overlay)*
+<img width="1429" height="612" alt="step5" src="https://github.com/user-attachments/assets/b5441415-4cac-49bc-a8b6-c247b87e455f" />
+
 
 **What Happens:**
 - A heatmap overlay highlights the image regions that most influenced the model's diagnosis
@@ -186,6 +187,6 @@ Both datasets are publicly available and de-identified; no primary data collecti
 
 ## Contributor
 
-- [Aderonke Adelabu](https://www.linkedin.com/in/aderonke-kausar-adelabu/)
+- ## Aderonke Adelabu
 
 **Supervisor: Dr. Olamilekan Shobayo**
