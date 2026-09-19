@@ -157,9 +157,10 @@ Full methodology, evaluation metrics, and confusion matrices are documented in t
 ## Model Weights
 
 Fine-tuned adapter weights (~2.8GB each) are hosted on Google Drive rather than in this repository, due to file size:
-- Model A (fracture subtype): *(insert Google Drive share link)*
-- Model B (fracture detection, high sensitivity): *(insert Google Drive share link)*
-- Model B2 (fracture detection, high specificity): *(insert Google Drive share link)*
+
+- Model A (fracture subtype): *(https://drive.google.com/drive/folders/1UuSwpTNHLnT6Uiva3eu50dQ6T5zBnufE?usp=drive_link)*
+- Model B (fracture detection): *(https://drive.google.com/drive/folders/11C25YVGQdiB5sXCBHNnZ-d4zqK0yWWHs?usp=drive_link)*
+- Model B2 (fracture detection): *(https://drive.google.com/drive/folders/1FfBl8y1soYYaUndYBOTa0qnqwY42jCyX?usp=drive_link)*
 
 Each folder is shared as "Anyone with the link — Viewer". Download the relevant folder(s) and place them under a local `models/` directory matching the paths configured in `app/config.py`, or mount your own copy of Google Drive and update `config.py`'s paths accordingly if running in Colab.
 
